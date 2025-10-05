@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eligent — Becas, alertas, noticias y mapa</title>
+  <meta name="description" content="Eligent centraliza becas y beneficios, envía alertas de plazos, muestra noticias relevantes y un mapa de instituciones. Encuesta anónima y registro de beta." />
+  <meta property="og:title" content="Eligent — Becas, alertas, noticias y mapa" />
+  <meta property="og:description" content="Centraliza becas, alerta plazos, informa con noticias y mapea instituciones. Participa en la beta." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Principal">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-name">Eligent</div>
+      </div>
+      <div class="nav-actions">
+        <a class="btn ghost small" href="#" id="langToggle" aria-label="Cambiar idioma">ES</a>
+        <a class="btn ghost small" href="#survey">Encuesta</a>
+        <button class="btn primary small" id="themeToggle" aria-pressed="false" aria-label="Cambiar tema">Modo oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">Elegibilidad, elegantemente</span>
+          <h1 class="headline">Becas, alertas, <u>noticias</u> y mapa — en un solo lugar</h1>
+          <p class="sub">
+            <strong>Eligent</strong> centraliza beneficios, te avisa cuándo expiran
+            <span class="badge-deadline">plazos críticos</span>, informa con un **brief** curado
+            y muestra un atlas de instituciones. Privacidad por diseño: encuesta y piloto separados.
+          </p>
+
+          <div class="features" aria-label="Módulos de producto">
+            <div class="chip"><b>Match</b> · Elegibilidad</div>
+            <div class="chip"><b>Pulse</b> · Alertas</div>
+            <div class="chip"><b>Brief</b> · Noticias</div>
+            <div class="chip"><b>Atlas</b> · Mapa</div>
+          </div>
+
+          <div class="cta-wrap">
+            <a class="btn primary" href="#beta">Acceso anticipado (beta)</a>
+            <a class="btn" id="survey" href="SURVEY_URL_AQUI" target="_blank" rel="noopener">Responder encuesta anónima</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-labelledby="hero-visual">
+          <h2 id="hero-visual" class="visually-hidden">Vista de marca</h2>
+          <p class="sub">Espacio para tu logo o mockup (1200 × 800 recomendado).</p>
+          <img src="https://picsum.photos/seed/eligent/800/420" alt="Vista previa del tablero de Eligent con becas, alertas, noticias y mapa" />
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTO -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Módulos de producto</h2>
+        <p class="section-sub">Cuatro piezas, una experiencia.</p>
+        <div class="grid-3">
+          <article class="card">
+            <span class="pill match">Eligent Match</span>
+            <h3>Ver solo lo que te calza</h3>
+            <p>Reglas + ML explicable para priorizar beneficios según perfil, región y plazos.</p>
+          </article>
+          <article class="card">
+            <span class="pill pulse">Eligent Pulse</span>
+            <h3>Alertas que importan</h3>
+            <p>Vencimientos y cambios, sin ruido: solo lo crítico y a tiempo.</p>
+          </article>
+          <article class="card">
+            <span class="pill brief">Eligent Brief</span>
+            <h3>Noticias verificadas</h3>
+            <p>Selección curada de fuentes confiables con enlaces verificados y fechas.</p>
+          </article>
+          <article class="card">
+            <span class="pill atlas">Eligent Atlas</span>
+            <h3>Mapa de instituciones</h3>
+            <p>Universidades, IP/CFT y puntos relevantes por región.</p>
+          </article>
+          <article class="card">
+            <h3>Privacidad por diseño</h3>
+            <p>Encuesta anónima. Registro beta en página aparte, sin vincular respuestas.</p>
+          </article>
+          <article class="card">
+            <h3>Accesibilidad AA</h3>
+            <p>Navegación por teclado, contraste suficiente y etiquetas ARIA.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BETA -->
+    <section id="beta" aria-labelledby="beta-title">
+      <div class="container">
+        <h2 id="beta-title" class="section-title">Acceso anticipado (beta)</h2>
+        <p class="section-sub">Regístrate para recibir primero el enlace de la beta. Este formulario se integra a un servicio externo; no guarda datos en esta página.</p>
+
+        <form class="card" id="betaForm" aria-describedby="betaHelp">
+          <!-- ACTION_URL: cuando tengas tu endpoint (Formspree/Netlify/Apps Script), añade action="ACTION_URL_AQUI" method="POST" -->
+          <label for="email" class="visually-hidden">Correo electrónico</label>
+          <div class="email-wrap">
+            <input id="email" name="email" class="input" type="email" placeholder="tu@email.com"
+                   inputmode="email" autocomplete="email" required aria-required="true" />
+            <button class="btn primary" type="submit">Quiero la beta</button>
+          </div>
+          <p id="betaHelp" class="consent">
+            Al enviar tu correo aceptas recibir invitación a la beta y noticias relevantes de Eligent.
+            Este registro es <b>independiente</b> de la encuesta anónima.
+            Contacto: <a href="mailto:contacto.eligent@gmail.com">contacto.eligent@gmail.com</a>.
+          </p>
+          <p id="betaStatus" class="consent" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- PILARES -->
+    <section aria-labelledby="tech-title">
+      <div class="container">
+        <h2 id="tech-title" class="section-title">Pilares técnicos (coming soon)</h2>
+        <p class="section-sub">Demostraciones y artículos cortos que irán a tu GitHub: Data Science, Cloud, Ciberseguridad y ML.</p>
+        <div class="grid-4">
+          <article class="card tech-card" data-kind="ds">
+            <h3>Data Science</h3>
+            <ul>
+              <li>Dashboard de elegibilidad por comuna (k-anonymity ≥ 5)</li>
+              <li>TF-IDF para recomendación content-based</li>
+              <li>Métricas: WAU, CTR de alertas, time-to-first-favorite</li>
+            </ul>
+          </article>
+          <article class="card tech-card" data-kind="cloud">
+            <h3>Cloud</h3>
+            <ul>
+              <li>Landing en GitHub Pages + API en Azure/GCP</li>
+              <li>IaC (Bicep/Terraform) y observabilidad</li>
+              <li>CI/CD con GitHub Actions</li>
+            </ul>
+          </article>
+          <article class="card tech-card" data-kind="sec">
+            <h3>Ciberseguridad</h3>
+            <ul>
+              <li>OWASP: JWT corto, rotate secrets, CSP</li>
+              <li>Registro y transparencia de accesos</li>
+              <li>Política de privacidad clara y versionada</li>
+            </ul>
+          </article>
+          <article class="card tech-card" data-kind="ml">
+            <h3>Machine Learning</h3>
+            <ul>
+              <li>Recomendador híbrido (reglas + similitud)</li>
+              <li>Explicabilidad: “por qué te sugiero esto”</li>
+              <li>Entrenamiento programado + endpoint</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-name">Eligent</div>
+        </div>
+        <p class="legal">© <span id="year"></span> Eligent. Enfoque en estudiantes adultos (18+). Encuesta anónima; registro de beta en página separada.</p>
+        <p class="legal">Contacto: <a href="mailto:contacto.eligent@gmail.com">contacto.eligent@gmail.com</a></p>
+      </div>
+      <div>
+        <strong>Atajos</strong>
+        <ul>
+          <li><a href="#beta">Registro beta</a></li>
+          <li><a href="SURVEY_URL_AQUI" target="_blank" rel="noopener">Encuesta anónima</a></li>
+          <li><a href="#" id="privacyLink">Privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Redes</strong>
+        <div class="socials" aria-label="Redes sociales">
+          <a href="#" aria-label="GitHub" title="GitHub">GH</a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter/X" title="X">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
