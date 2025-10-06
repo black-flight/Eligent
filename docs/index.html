@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eligent — Becas, alertas, noticias y mapa</title>
   <meta name="description" content="Eligent centraliza becas y beneficios, envía alertas de plazos, informa con noticias relevantes y muestra un mapa de instituciones. Encuesta anónima y registro de beta." />
-  <meta property="og:title" content="Eligent — Becas, alertas, noticias y mapa" />
-  <meta property="og:description" content="Centraliza becas, alerta plazos, informa con noticias y mapea instituciones. Participa en la beta." />
-  <meta property="og:type" content="website" />
   <meta name="color-scheme" content="dark" />
   <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="assets/styles.css" />
@@ -17,9 +14,10 @@
 
   <header>
     <div class="container nav" role="navigation" aria-label="Principal">
+      <!-- ZONA-LOGO (EASTER EGG: triple clic muestra alerta "coming soon") -->
       <a class="brand" id="brandArea" title="Eligent — ir a inicio" href="#">
-        <!-- Logo: sube PNG 512x512 transparente a assets/img/logo-500.png -->
-        <img id="brandImg" src="logo_blanco.png" alt="Eligent — ir a inicio" width="32" height="32" />
+        <!-- Logo BLANCO 512×512 (se muestra a 40×40) -->
+        <img id="brandImg" src="assets/img/logo_blanco.png" alt="Eligent — ir a inicio" width="40" height="40" />
         <div class="brand-name">Eligent</div>
       </a>
       <div class="nav-actions">
@@ -57,54 +55,38 @@
 
         <div class="hero-card" aria-labelledby="hero-visual">
           <h2 id="hero-visual" class="visually-hidden">Vista de marca</h2>
-          <!-- Imagen grande opcional para el hero -->
           <img id="heroVisual" src="assets/img/hero-visual.png" alt="Vista previa de Eligent con becas, alertas, noticias y mapa" />
-          <p class="sub small-note">Si no ves imagen, sube <code>assets/img/hero-visual.png</code> (1200×800 recomendado).</p>
+          <p class="sub small-note">Sugerido: <code>assets/img/hero-visual.png</code> 1200×800.</p>
         </div>
       </div>
     </section>
 
-    <!-- QUÉ QUEREMOS LOGRAR (dolor → solución) -->
+    <!-- QUÉ QUEREMOS LOGRAR -->
     <section aria-labelledby="goals-title">
       <div class="container">
         <h2 id="goals-title" class="section-title">Lo que queremos lograr</h2>
         <p class="section-sub">Para que tomes decisiones con información clara y a tiempo.</p>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>No más perder plazos</h3>
-            <p>Alertas precisas para que no se te pase la fecha. Filtradas por lo que te aplica, sin ruido.</p>
-          </article>
-          <article class="card">
-            <h3>Todo en un lugar simple</h3>
-            <p>Becas, requisitos y noticias relevantes de educación reunidas y verificadas.</p>
-          </article>
-          <article class="card">
-            <h3>Mapa que te guía</h3>
-            <p>Busca y distingue fácilmente universidades, IP/CFT y puntos clave cercanos.</p>
-          </article>
-        </div>
-
-        <!-- Mini carrusel (dolor real → propuesta) -->
+        <!-- Carrusel de cards (horizontal) -->
         <div class="carousel" aria-label="Situaciones reales y cómo ayuda Eligent">
           <button class="car-btn prev" aria-label="Anterior">‹</button>
           <div class="car-track" id="carTrack">
-            <div class="car-item">
-              <h4>“Me enteré tarde de una beca.”</h4>
+            <article class="car-item card">
+              <h3>“Me enteré tarde de una beca.”</h3>
               <p><b>Eligent Pulse</b> te avisa con tiempo y muestra última actualización.</p>
-            </div>
-            <div class="car-item">
-              <h4>“La info está repartida.”</h4>
-              <p><b>Eligent Brief</b> resume fuentes confiables y links verificados en un feed único.</p>
-            </div>
-            <div class="car-item">
-              <h4>“No sé qué me aplica.”</h4>
-              <p><b>Eligent Match</b> muestra primero lo que tiene mayor probabilidad de calzar contigo.</p>
-            </div>
-            <div class="car-item">
-              <h4>“No ubico bien los lugares.”</h4>
-              <p><b>Eligent Atlas</b> te muestra el mapa con instituciones destacadas y filtros.</p>
-            </div>
+            </article>
+            <article class="car-item card">
+              <h3>“La info está repartida.”</h3>
+              <p><b>Eligent Brief</b> reúne fuentes confiables y links verificados en un solo feed.</p>
+            </article>
+            <article class="car-item card">
+              <h3>“No sé qué me aplica.”</h3>
+              <p><b>Eligent Match</b> prioriza lo que tiene mayor probabilidad de calzar contigo.</p>
+            </article>
+            <article class="car-item card">
+              <h3>“No ubico bien los lugares.”</h3>
+              <p><b>Eligent Atlas</b> destaca instituciones cercanas con filtros y búsqueda.</p>
+            </article>
           </div>
           <button class="car-btn next" aria-label="Siguiente">›</button>
         </div>
@@ -115,7 +97,7 @@
     <section id="beta" aria-labelledby="beta-title">
       <div class="container">
         <h2 id="beta-title" class="section-title">Acceso anticipado (beta)</h2>
-        <p class="section-sub">Regístrate para recibir primero el enlace. Este formulario se integra a un servicio externo; no guarda datos en esta página.</p>
+        <p class="section-sub">Regístrate para recibir primero el enlace. Este formulario se integra a un servicio externo.</p>
 
         <form class="card" id="betaForm" aria-describedby="betaHelp">
           <!-- Agrega action="ACTION_URL_AQUI" method="POST" cuando integres tu servicio -->
@@ -126,7 +108,7 @@
             <button class="btn primary" type="submit">Quiero la beta</button>
           </div>
           <p id="betaHelp" class="consent">
-            Este registro es <b>independiente</b> de la encuesta anónima. Contacto:
+            Registro <b>independiente</b> de la encuesta anónima. Contacto:
             <a href="mailto:contacto.eligent@gmail.com">contacto.eligent@gmail.com</a>.
           </p>
           <p id="betaStatus" class="consent" role="status" aria-live="polite"></p>
@@ -140,7 +122,7 @@
     <div class="container footer-grid">
       <div>
         <div class="brand" style="margin-bottom:8px">
-          <img id="brandImgFooter" src="logo_blanco.png" alt="Logo de Eligent" width="28" height="28" />
+          <img id="brandImgFooter" src="assets/img/logo_blanco.png" alt="Eligent" width="32" height="32" />
           <div class="brand-name">Eligent</div>
         </div>
         <p class="legal">© <span id="year"></span> Eligent. Encuesta anónima · Registro de beta en página separada.</p>
@@ -155,35 +137,11 @@
         </ul>
       </div>
       <div>
-        <strong>Novedades</strong>
-        <div>
-          <button id="easterBtn" class="easter-btn" aria-haspopup="dialog" aria-controls="easterModal" title="coming soon">
-            👀 coming soon
-          </button>
-        </div>
+        <strong>&nbsp;</strong>
+        <!-- ya no hay botón visible de coming soon -->
       </div>
     </div>
   </footer>
-
-  <!-- Modal del Easter Egg -->
-  <div id="easterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="easterTitle" aria-describedby="easterDesc">
-    <div class="modal__dialog">
-      <div class="modal__icon" aria-hidden="true">
-        <!-- Cohete SVG (estilo simple) -->
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 19l4-2 8-8a3 3 0 10-4-4l-8 8-2 4 4-2z" stroke="currentColor" stroke-width="1.6" />
-          <circle cx="14.5" cy="9.5" r="1.5" fill="currentColor"/>
-        </svg>
-      </div>
-      <div class="modal__content">
-        <h3 id="easterTitle">👀 Estamos trabajando</h3>
-        <p id="easterDesc">Sabemos que estás ansioso por conocer las nuevas funcionalidades que Eligent puede traer, pero calma: <b>aún estamos empezando</b>. Gracias por estar aquí desde el inicio.</p>
-        <div class="modal__actions">
-          <button class="btn primary" id="easterClose">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script src="assets/script.js"></script>
 </body>
