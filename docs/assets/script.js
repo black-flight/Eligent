@@ -1,72 +1,85 @@
-// Utilidad corta
+// Helper
 const $ = (s, o=document)=>o.querySelector(s);
 
-// Año dinámico en el footer
+// Año dinámico
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Modo oscuro/claro manual
-const themeBtn = $('#themeToggle');
-const root = document.documentElement;
-const savedTheme = localStorage.getItem('eligent-theme');
-if (savedTheme){
-  root.setAttribute('data-theme', savedTheme);
-  if (themeBtn) themeBtn.textContent = savedTheme === 'dark' ? 'Modo claro' : 'Modo oscuro';
-}
-if (themeBtn){
-  themeBtn.addEventListener('click', () => {
-    const now = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', now);
-    localStorage.setItem('eligent-theme', now);
-    themeBtn.textContent = now === 'dark' ? 'Modo claro' : 'Modo oscuro';
-    themeBtn.setAttribute('aria-pressed', now === 'dark');
-  });
-}
-
-// Cambio de idioma (stub)
+// Idioma: aviso
 const langToggle = $('#langToggle');
 if (langToggle){
   langToggle.addEventListener('click', (e) => {
     e.preventDefault();
-    alert('Switcher de idioma: aquí podrás cargar /en con el mismo HTML o usar i18n estático.');
+    alert('Más idiomas pronto.');
   });
 }
 
-// Form de beta (validación + estados; listo para integrar endpoint)
+// Form beta (validación + estado demo)
 const betaForm = $('#betaForm');
 const statusEl = $('#betaStatus');
-
 if (betaForm){
   betaForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = $('#email').value.trim();
-
-    // Validación simple
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
       statusEl.textContent = 'Por favor, ingresa un correo válido.';
-      statusEl.style.color = 'var(--brand-3)';
+      statusEl.style.color = 'var(--red-deadline)';
       return;
     }
-
     // Reemplaza por tu endpoint real:
-    // await fetch('ACTION_URL_AQUI', {
-    //   method:'POST',
-    //   headers:{'Content-Type':'application/json'},
-    //   body: JSON.stringify({ email })
-    // });
+    // await fetch('ACTION_URL_AQUI', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email }) });
 
-    // Estado de demo inmediato (no persistente)
     statusEl.textContent = '¡Listo! Te contactaremos para la beta cuando esté disponible.';
-    statusEl.style.color = 'var(--brand-2)';
+    statusEl.style.color = 'var(--green-match)';
     betaForm.reset();
   });
 }
 
-// Link de privacidad (placeholder)
+// Carrusel
+const track = $('#carTrack');
+if (track){
+  const prev = document.querySelector('.car-btn.prev');
+  const next = document.querySelector('.car-btn.next');
+  const step = 340;
+  prev.addEventListener('click', ()=> track.scrollBy({left:-step, behavior:'smooth'}));
+  next.addEventListener('click', ()=> track.scrollBy({left: step, behavior:'smooth'}));
+}
+
+// Privacidad (placeholder)
 const privacyLink = $('#privacyLink');
 if (privacyLink){
   privacyLink.addEventListener('click', (e)=>{
     e.preventDefault();
     alert('Privacidad: encuesta anónima; registro beta en página distinta del formulario. Sin datos sensibles.');
   });
+}
+
+// Logo fallback si no existe imagen
+function setupLogo(imgId){
+  const img = $(imgId);
+  if (!img) return;
+  img.addEventListener('error', ()=>{ img.style.display='none'; });
+}
+setupLogo('#brandImg');
+setupLogo('#brandImgFooter');
+
+// Modal Easter Egg
+const easterBtn = $('#easterBtn');
+const easterModal = $('#easterModal');
+const easterClose = $('#easterClose');
+
+function openModal(){
+  easterModal.classList.add('show');
+  // focus para accesibilidad
+  easterClose.focus();
+}
+function closeModal(){
+  easterModal.classList.remove('show');
+}
+
+if (easterBtn && easterModal && easterClose){
+  easterBtn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+  easterClose.addEventListener('click', closeModal);
+  easterModal.addEventListener('click', (e)=>{ if(e.target === easterModal) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
 }
