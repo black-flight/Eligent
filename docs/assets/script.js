@@ -5,7 +5,7 @@ const $ = (s, o=document)=>o.querySelector(s);
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Idioma: aviso correcto
+// Idioma: aviso
 const langToggle = $('#langToggle');
 if (langToggle){
   langToggle.addEventListener('click', (e) => {
@@ -32,12 +32,12 @@ if (betaForm){
   });
 }
 
-// Carrusel (prev/next + scroll)
+// Carrusel prev/next
 const track = $('#carTrack');
 if (track){
   const prev = document.querySelector('.car-btn.prev');
   const next = document.querySelector('.car-btn.next');
-  const step = 360;
+  const step = 380;
   prev.addEventListener('click', ()=> track.scrollBy({left:-step, behavior:'smooth'}));
   next.addEventListener('click', ()=> track.scrollBy({left: step, behavior:'smooth'}));
 }
@@ -51,7 +51,7 @@ if (privacyLink){
   });
 }
 
-// Logo: si la imagen no carga, simplemente se oculta (no hay círculo)
+// Logo fallback (si no carga, se oculta)
 function setupLogo(id){
   const img = $(id);
   if (!img) return;
@@ -60,18 +60,30 @@ function setupLogo(id){
 setupLogo('#brandImg');
 setupLogo('#brandImgFooter');
 
-// EASTER EGG (triple clic sobre zona del logo del header)
+// EASTER EGG visible (footer → modal)
+const easterBtn = $('#easterBtn');
+const easterModal = $('#easterModal');
+const easterClose = $('#easterClose');
+
+function openModal(){ easterModal.classList.add('show'); easterClose.focus(); }
+function closeModal(){ easterModal.classList.remove('show'); }
+
+if (easterBtn && easterModal && easterClose){
+  easterBtn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+  easterClose.addEventListener('click', closeModal);
+  easterModal.addEventListener('click', (e)=>{ if(e.target === easterModal) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+}
+
+// EASTER EGG oculto (triple clic en logo header → misma experiencia modal)
 let clicks = 0;
 const brandArea = $('#brandArea');
-if (brandArea){
+if (brandArea && easterModal){
   brandArea.addEventListener('click', ()=>{
     clicks++;
     clearTimeout(brandArea.__t);
-    brandArea.__t = setTimeout(()=> clicks = 0, 650); // ventana corta
-    if (clicks >= 3){
-      clicks = 0;
-      alert('👀 Sabemos que estás ansioso por las nuevas funcionalidades que Eligent puede traer, pero calma: aún estamos empezando. 🚀');
-    }
+    brandArea.__t = setTimeout(()=> clicks = 0, 650);
+    if (clicks >= 3){ clicks = 0; openModal(); }
   });
 }
 
@@ -80,4 +92,3 @@ const heroVisual = $('#heroVisual');
 if (heroVisual){
   heroVisual.addEventListener('error', ()=>{ heroVisual.style.display = 'none'; });
 }
-
