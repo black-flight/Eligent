@@ -70,7 +70,7 @@ if (brandArea){
     brandArea.__t = setTimeout(()=> clicks = 0, 650); // ventana corta
     if (clicks >= 3){
       clicks = 0;
-      alert('👀 Sabemos que estás ansioso por las nuevas funcionalidades que Eligent puede traer, pero calma: aún estamos empezando. 🚀');
+      alert('👀 Sabemos que estás ansioso por las nuevas funcionalidades que Eligent puede traer, pero calma: esto recién empieza. 🚀');
     }
   });
 }
