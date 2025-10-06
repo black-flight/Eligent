@@ -14,11 +14,10 @@
 
   <header>
     <div class="container nav" role="navigation" aria-label="Principal">
-      <!-- ZONA-LOGO (EASTER EGG: triple clic muestra alerta "coming soon") -->
+      <!-- ZONA LOGO (triple clic: easter egg) -->
       <a class="brand" id="brandArea" title="Eligent — ir a inicio" href="#">
-        <!-- Logo BLANCO 512×512 (se muestra a 40×40) -->
         <img id="brandImg" src="logo_blanco.png" alt="Logo Eligent — ir a inicio" width="40" height="40" />
-        <div class="brand-name">Eligent</div>
+        <span class="brand-name">Eligent</span>
       </a>
       <div class="nav-actions">
         <a class="btn ghost small" href="#" id="langToggle" aria-label="Cambiar idioma">ES</a>
@@ -32,7 +31,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="kicker">Elegibilidad, elegantemente</span>
+          <span class="kicker">Funciones que Eligent puede ofrecer</span>
           <h1 class="headline">Becas, alertas, noticias y mapa — en un solo lugar</h1>
           <p class="sub">
             <strong>Eligent</strong> centraliza beneficios, te avisa cuándo expiran
@@ -67,7 +66,7 @@
         <h2 id="goals-title" class="section-title">Lo que queremos lograr</h2>
         <p class="section-sub">Para que tomes decisiones con información clara y a tiempo.</p>
 
-        <!-- Carrusel de cards (horizontal) -->
+        <!-- Carrusel de cards -->
         <div class="carousel" aria-label="Situaciones reales y cómo ayuda Eligent">
           <button class="car-btn prev" aria-label="Anterior">‹</button>
           <div class="car-track" id="carTrack">
@@ -100,7 +99,6 @@
         <p class="section-sub">Regístrate para recibir primero el enlace. Este formulario se integra a un servicio externo.</p>
 
         <form class="card" id="betaForm" aria-describedby="betaHelp">
-          <!-- Agrega action="ACTION_URL_AQUI" method="POST" cuando integres tu servicio -->
           <label for="email" class="visually-hidden">Correo electrónico</label>
           <div class="email-wrap">
             <input id="email" name="email" class="input" type="email" placeholder="tu@email.com"
@@ -121,10 +119,10 @@
   <footer role="contentinfo">
     <div class="container footer-grid">
       <div>
-        <div class="brand" style="margin-bottom:8px">
+        <a class="brand brand-footer" href="#">
           <img id="brandImgFooter" src="logo_blanco.png" alt="Logo Eligent" width="32" height="32" />
-          <div class="brand-name">Eligent</div>
-        </div>
+          <span class="brand-name">Eligent</span>
+        </a>
         <p class="legal">© <span id="year"></span> Eligent. Encuesta anónima · Registro de beta en página separada.</p>
         <p class="legal">Contacto: <a href="mailto:contacto.eligent@gmail.com">contacto.eligent@gmail.com</a></p>
       </div>
@@ -137,11 +135,40 @@
         </ul>
       </div>
       <div>
-        <strong>&nbsp;</strong>
-        <!-- ya no hay botón visible de coming soon -->
+        <strong>Novedades</strong>
+        <div>
+          <!-- COMING SOON visible en footer -->
+          <button id="easterBtn" class="easter-btn" aria-haspopup="dialog" aria-controls="easterModal" title="coming soon">
+            👀 coming soon
+          </button>
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- Modal del Easter Egg -->
+  <div id="easterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="easterTitle" aria-describedby="easterDesc">
+    <div class="modal__dialog">
+      <div class="modal__icon" aria-hidden="true">
+        <!-- Cohete SVG -->
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 19l4-2 8-8a3 3 0 10-4-4l-8 8-2 4 4-2z" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="14.5" cy="9.5" r="1.5" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="modal__content">
+        <h3 id="easterTitle">👀 coming soon</h3>
+        <p id="easterDesc">Sabemos que estás ansioso por las nuevas funcionalidades que Eligent puede traer, pero calma: <b>esto recién empieza</b>. Gracias por estar aquí desde el inicio. 🚀</p>
+        <div class="modal__actions">
+          <button class="btn primary" id="easterClose">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
 
   <script src="assets/script.js"></script>
 </body>
