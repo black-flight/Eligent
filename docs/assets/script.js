@@ -18,7 +18,7 @@ if (langToggle){
 const betaForm = $('#betaForm');
 const statusEl = $('#betaStatus');
 if (betaForm){
-  betaForm.addEventListener('submit', async (e) => {
+  betaForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = $('#email').value.trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
@@ -37,7 +37,7 @@ const track = $('#carTrack');
 if (track){
   const prev = document.querySelector('.car-btn.prev');
   const next = document.querySelector('.car-btn.next');
-  const step = 380;
+  const step = 420; // un poco más para tarjetas más anchas
   prev.addEventListener('click', ()=> track.scrollBy({left:-step, behavior:'smooth'}));
   next.addEventListener('click', ()=> track.scrollBy({left: step, behavior:'smooth'}));
 }
@@ -60,7 +60,7 @@ function setupLogo(id){
 setupLogo('#brandImg');
 setupLogo('#brandImgFooter');
 
-// EASTER EGG visible (footer → modal)
+// Modal Coming Soon
 const easterBtn = $('#easterBtn');
 const easterModal = $('#easterModal');
 const easterClose = $('#easterClose');
@@ -70,21 +70,16 @@ function closeModal(){ easterModal.classList.remove('show'); }
 
 if (easterBtn && easterModal && easterClose){
   easterBtn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
-  easterClose.addEventListener('click', closeModal);
+  easterClose.addEventListener('click', (e)=>{ e.preventDefault(); closeModal(); });
+
+  // cierre por fondo y por ESC:
   easterModal.addEventListener('click', (e)=>{ if(e.target === easterModal) closeModal(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
-}
 
-// EASTER EGG oculto (triple clic en logo header → misma experiencia modal)
-let clicks = 0;
-const brandArea = $('#brandArea');
-if (brandArea && easterModal){
-  brandArea.addEventListener('click', ()=>{
-    clicks++;
-    clearTimeout(brandArea.__t);
-    brandArea.__t = setTimeout(()=> clicks = 0, 650);
-    if (clicks >= 3){ clicks = 0; openModal(); }
-  });
+  // feedback de clic (añade animación rápida)
+  easterClose.addEventListener('mousedown', ()=> easterClose.classList.add('is-pressed'));
+  easterClose.addEventListener('mouseup',   ()=> easterClose.classList.remove('is-pressed'));
+  easterClose.addEventListener('mouseleave',()=> easterClose.classList.remove('is-pressed'));
 }
 
 // Hero visual: ocúltalo si no existe
