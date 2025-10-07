@@ -121,4 +121,5 @@ footer{padding:38px 0;border-top:1px solid var(--border);color:var(--muted)}
   .features{ grid-template-columns:1fr }
   .footer-grid{ grid-template-columns:1fr }
   .car-item{ min-width:88% }
-} 
+}
+
