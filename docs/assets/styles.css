@@ -20,7 +20,8 @@ img{max-width:100%;display:block}
 header{position:sticky;top:0;background:rgba(15,23,42,.65);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(255,255,255,.08);z-index:30}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .brand{display:inline-flex;gap:4px;align-items:center;text-decoration:none}
-.brand img{width:40px;height:40px;object-fit:contain;display:block}
+/* Ajuste fino: logo apenas más arriba */
+.brand img{width:40px;height:40px;object-fit:contain;display:block;position:relative;top:-2px}
 .brand-name{font-weight:900;letter-spacing:.15px;color:#fff;font-size:1.12rem;line-height:1}
 .brand:hover .brand-name{ text-decoration:underline; text-decoration-color:#fff; }
 
@@ -54,29 +55,30 @@ header{position:sticky;top:0;background:rgba(15,23,42,.65);backdrop-filter:satur
 /* CTA */
 .cta-wrap{margin-top:16px;display:flex;gap:18px;flex-wrap:wrap}
 
-/* Hero: cuadrícula 4 imágenes */
+/* NUEVO: Hero cuadrícula de 4 imágenes grande, debajo de los CTA */
 .hero-quad{
+  margin-top:22px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  grid-template-columns:repeat(2, minmax(280px, 1fr)); /* 2x2 amplio (estilo Microsoft/Google/IBM) */
+  gap:22px;
 }
 .quad-item{
-  margin:0;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:var(--shadow-lg);
+  margin:0;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);
   display:flex;flex-direction:column;
 }
 .quad-item img{
-  width:100%;height:auto;display:block;
+  width:100%;height:auto;display:block; /* sin deformar */
 }
 .quad-item figcaption{
-  padding:10px 14px;
-  font-weight:700;color:#fff;
-  border-top:1px solid var(--border);
-  background:var(--surface);
+  padding:12px 16px;font-weight:700;color:#fff;border-top:1px solid var(--border);background:var(--surface);
+}
+@media (min-width:1120px){
+  .hero-quad{grid-template-columns:repeat(2,1fr);gap:24px}
+  .quad-item img{max-height:420px}
+}
+@media (max-width:700px){
+  .hero-quad{grid-template-columns:1fr}
 }
 
 /* Secciones */
@@ -100,9 +102,18 @@ section{padding:58px 0;border-top:1px solid var(--border)}
   border-radius:16px;padding:24px;box-shadow:var(--shadow-sm)
 }
 .car-item h3{margin:0 0 10px;color:#fff}
-.car-btn{position:absolute;top:50%;transform:translateY(-50%);border:1px solid var(--border);background:var(--card);color:#fff;border-radius:999px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,transform .12s}
+
+/* Flecha centrada en el botón circular del carrusel */
+.car-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  border:1px solid var(--border);background:var(--card);color:#fff;border-radius:999px;
+  width:38px;height:38px;
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .15s,transform .12s;
+  padding:0;line-height:1;font-size:22px; /* centra el glifo verticalmente */
+}
 .car-btn:hover{background:#0e1729}
-.car-btn:active{transform:translateY(1px)}
+.car-btn:active{transform:translateY(-50%) translateY(1px)}
 .car-btn.prev{left:-4px}
 .car-btn.next{right:-4px}
 
@@ -117,6 +128,8 @@ footer{padding:38px 0;border-top:1px solid var(--border);color:var(--muted)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}
 .brand-footer{display:inline-flex;gap:6px;align-items:center;text-decoration:none}
 .brand-footer .brand-name{color:#fff;font-weight:800}
+/* Ajuste fino: logo del footer un poquito más arriba */
+.brand-footer img{position:relative;top:-2px}
 .legal{font-size:.85rem;margin-top:10px}
 
 /* Coming soon */
@@ -151,4 +164,3 @@ footer{padding:38px 0;border-top:1px solid var(--border);color:var(--muted)}
   .footer-grid{grid-template-columns:1fr}
   .car-item{min-width:88%}
 }
-
