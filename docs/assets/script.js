@@ -37,7 +37,7 @@ const track = $('#carTrack');
 if (track){
   const prev = document.querySelector('.car-btn.prev');
   const next = document.querySelector('.car-btn.next');
-  const step = 420; // un poco más para tarjetas más anchas
+  const step = 420;
   prev.addEventListener('click', ()=> track.scrollBy({left:-step, behavior:'smooth'}));
   next.addEventListener('click', ()=> track.scrollBy({left: step, behavior:'smooth'}));
 }
@@ -76,14 +76,8 @@ if (easterBtn && easterModal && easterClose){
   easterModal.addEventListener('click', (e)=>{ if(e.target === easterModal) closeModal(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
 
-  // feedback de clic (añade animación rápida)
+  // feedback micro (añade/remueve clase de presión)
   easterClose.addEventListener('mousedown', ()=> easterClose.classList.add('is-pressed'));
   easterClose.addEventListener('mouseup',   ()=> easterClose.classList.remove('is-pressed'));
   easterClose.addEventListener('mouseleave',()=> easterClose.classList.remove('is-pressed'));
-}
-
-// Hero visual: ocúltalo si no existe
-const heroVisual = $('#heroVisual');
-if (heroVisual){
-  heroVisual.addEventListener('error', ()=>{ heroVisual.style.display = 'none'; });
 }
