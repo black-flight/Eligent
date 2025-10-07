@@ -52,10 +52,29 @@
           </div>
         </div>
 
-        <div class="hero-card" aria-labelledby="hero-visual">
-          <h2 id="hero-visual" class="visually-hidden">Vista de marca</h2>
-          <img id="heroVisual" src="assets/img/hero-visual.png" alt="Vista previa de Eligent con becas, alertas, noticias y mapa" />
-          <p class="sub small-note">Sugerido: <code>assets/img/hero-visual.png</code> 1200×800.</p>
+        <!-- Hero en cuadrícula de 4 imágenes -->
+        <div class="hero-quad" aria-labelledby="hero-visual">
+          <h2 id="hero-visual" class="visually-hidden">Vista previa de Eligent por módulo</h2>
+
+          <figure class="quad-item">
+            <img src="assets/img/hero_match.png" alt="Eligent Match: lista de becas con probabilidad de elegibilidad">
+            <figcaption>Match</figcaption>
+          </figure>
+
+          <figure class="quad-item">
+            <img src="assets/img/hero_pulse.png" alt="Eligent Pulse: contador de plazos y alertas activables">
+            <figcaption>Pulse</figcaption>
+          </figure>
+
+          <figure class="quad-item">
+            <img src="assets/img/hero_brief.png" alt="Eligent Brief: titulares verificados y resumen informativo">
+            <figcaption>Brief</figcaption>
+          </figure>
+
+          <figure class="quad-item">
+            <img src="assets/img/hero_atlas.png" alt="Eligent Atlas: mapa con instituciones y búsqueda">
+            <figcaption>Atlas</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -137,7 +156,6 @@
       <div>
         <strong>Novedades</strong>
         <div>
-          <!-- COMING SOON visible en footer -->
           <button id="easterBtn" class="easter-btn" aria-haspopup="dialog" aria-controls="easterModal" title="coming soon">
             👀 coming soon
           </button>
@@ -150,7 +168,6 @@
   <div id="easterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="easterTitle" aria-describedby="easterDesc">
     <div class="modal__dialog">
       <div class="modal__icon" aria-hidden="true">
-        <!-- Cohete SVG -->
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M5 19l4-2 8-8a3 3 0 10-4-4l-8 8-2 4 4-2z" stroke="currentColor" stroke-width="1.6" />
           <circle cx="14.5" cy="9.5" r="1.5" fill="currentColor"/>
