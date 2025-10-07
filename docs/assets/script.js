@@ -32,14 +32,14 @@ if (betaForm){
   });
 }
 
-// Carrusel drag/scroll (simple)
+// Carrusel prev/next
 const track = $('#carTrack');
 if (track){
-  let isDown=false, startX=0, scrollLeft=0;
-  track.addEventListener('mousedown',(e)=>{isDown=true;startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;});
-  track.addEventListener('mouseleave',()=>isDown=false);
-  track.addEventListener('mouseup',()=>isDown=false);
-  track.addEventListener('mousemove',(e)=>{if(!isDown)return; e.preventDefault(); const x=e.pageX-track.offsetLeft; const walk=(x-startX)*1.2; track.scrollLeft=scrollLeft-walk;});
+  const prev = document.querySelector('.car-btn.prev');
+  const next = document.querySelector('.car-btn.next');
+  const step = 420;
+  prev.addEventListener('click', ()=> track.scrollBy({left:-step, behavior:'smooth'}));
+  next.addEventListener('click', ()=> track.scrollBy({left: step, behavior:'smooth'}));
 }
 
 // Privacidad (placeholder)
@@ -51,17 +51,33 @@ if (privacyLink){
   });
 }
 
+// Logo fallback (si no carga, se oculta)
+function setupLogo(id){
+  const img = $(id);
+  if (!img) return;
+  img.addEventListener('error', ()=>{ img.style.display='none'; });
+}
+setupLogo('#brandImg');
+setupLogo('#brandImgFooter');
+
 // Modal Coming Soon
 const easterBtn = $('#easterBtn');
 const easterModal = $('#easterModal');
 const easterClose = $('#easterClose');
 
-function openModal(){ easterModal.classList.add('show'); easterClose?.focus(); }
+function openModal(){ easterModal.classList.add('show'); easterClose.focus(); }
 function closeModal(){ easterModal.classList.remove('show'); }
 
-if (easterBtn && easterModal){
+if (easterBtn && easterModal && easterClose){
   easterBtn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
-  easterClose?.addEventListener('click', (e)=>{ e.preventDefault(); closeModal(); });
+  easterClose.addEventListener('click', (e)=>{ e.preventDefault(); closeModal(); });
+
+  // cierre por fondo y por ESC:
   easterModal.addEventListener('click', (e)=>{ if(e.target === easterModal) closeModal(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+  // feedback micro (añade/remueve clase de presión)
+  easterClose.addEventListener('mousedown', ()=> easterClose.classList.add('is-pressed'));
+  easterClose.addEventListener('mouseup',   ()=> easterClose.classList.remove('is-pressed'));
+  easterClose.addEventListener('mouseleave',()=> easterClose.classList.remove('is-pressed'));
 }
