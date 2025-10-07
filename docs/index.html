@@ -12,11 +12,11 @@
 <body>
   <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
-  <!-- HEADER -->
   <header>
     <div class="container nav" role="navigation" aria-label="Principal">
+      <!-- ZONA LOGO (triple clic: easter egg) -->
       <a class="brand" id="brandArea" title="Eligent — ir a inicio" href="#">
-        <img src="logo_blanco.png" alt="Logo de Eligent" width="40" height="40" />
+        <img id="brandImg" src="logo_blanco.png" alt="Logo Eligent — ir a inicio" width="40" height="40" />
         <span class="brand-name">Eligent</span>
       </a>
       <div class="nav-actions">
@@ -52,27 +52,27 @@
           </div>
         </div>
 
-        <!-- Vista previa 4 imágenes (grandes, 16:10) -->
+        <!-- Hero en cuadrícula de 4 imágenes -->
         <div class="hero-quad" aria-labelledby="hero-visual">
           <h2 id="hero-visual" class="visually-hidden">Vista previa de Eligent por módulo</h2>
 
           <figure class="quad-item">
-            <img src="img_match.png" alt="Eligent Match: becas sugeridas con probabilidad de elegibilidad" />
+            <img src="assets/img/hero_match.png" alt="Eligent Match: lista de becas con probabilidad de elegibilidad">
             <figcaption>Match</figcaption>
           </figure>
 
           <figure class="quad-item">
-            <img src="img_pulse.png" alt="Eligent Pulse: contador de días y alertas de plazos" />
+            <img src="assets/img/hero_pulse.png" alt="Eligent Pulse: contador de plazos y alertas activables">
             <figcaption>Pulse</figcaption>
           </figure>
 
           <figure class="quad-item">
-            <img src="img_brief.png" alt="Eligent Brief: titulares verificados y resumen informativo" />
+            <img src="assets/img/hero_brief.png" alt="Eligent Brief: titulares verificados y resumen informativo">
             <figcaption>Brief</figcaption>
           </figure>
 
           <figure class="quad-item">
-            <img src="img_atlas.png" alt="Eligent Atlas: mapa de instituciones con búsqueda y filtros" />
+            <img src="assets/img/hero_atlas.png" alt="Eligent Atlas: mapa con instituciones y búsqueda">
             <figcaption>Atlas</figcaption>
           </figure>
         </div>
@@ -85,7 +85,9 @@
         <h2 id="goals-title" class="section-title">Lo que queremos lograr</h2>
         <p class="section-sub">Para que tomes decisiones con información clara y a tiempo.</p>
 
+        <!-- Carrusel de cards -->
         <div class="carousel" aria-label="Situaciones reales y cómo ayuda Eligent">
+          <button class="car-btn prev" aria-label="Anterior">‹</button>
           <div class="car-track" id="carTrack">
             <article class="car-item card">
               <h3>“Me enteré tarde de una beca.”</h3>
@@ -104,6 +106,7 @@
               <p><b>Eligent Atlas</b> destaca instituciones cercanas con filtros y búsqueda.</p>
             </article>
           </div>
+          <button class="car-btn next" aria-label="Siguiente">›</button>
         </div>
       </div>
     </section>
@@ -136,7 +139,7 @@
     <div class="container footer-grid">
       <div>
         <a class="brand brand-footer" href="#">
-          <img src="logo_blanco.png" alt="Logo Eligent" width="32" height="32" />
+          <img id="brandImgFooter" src="logo_blanco.png" alt="Logo Eligent" width="32" height="32" />
           <span class="brand-name">Eligent</span>
         </a>
         <p class="legal">© <span id="year"></span> Eligent. Encuesta anónima · Registro de beta en página separada.</p>
@@ -180,6 +183,8 @@
     </div>
   </div>
 
+  <!-- JS -->
   <script src="assets/script.js"></script>
 </body>
-</html> 
+</html>
+
